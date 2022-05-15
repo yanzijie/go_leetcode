@@ -19,13 +19,13 @@ import (
 时间复杂度:O(n方)
 空间复杂度:O(1)	空间大小固定，不随变量改变
 */
-func TwoSum(nums []int, target int)[]int{
-	res := make([]int,2)
-	for i:=0;i<len(nums);i++{
-		for j:=i;j<len(nums)-1;j++{
-			if nums[i]+nums[j+1]==target{
-				res[0]=i
-				res[1]=j+1
+func TwoSum(nums []int, target int) []int {
+	res := make([]int, 2)
+	for i := 0; i < len(nums); i++ {
+		for j := i; j < len(nums)-1; j++ {
+			if nums[i]+nums[j+1] == target {
+				res[0] = i
+				res[1] = j + 1
 			}
 		}
 	}
@@ -39,16 +39,16 @@ func TwoSum(nums []int, target int)[]int{
 时间复杂度 : O(n) n是数组的长度
 空间复杂度 : O(n) 空间大小随着n的变化而变化
 */
-func TwoSumMap(nums []int, target int)[]int{
-	res := make([]int,2)
+func TwoSumMap(nums []int, target int) []int {
+	res := make([]int, 2)
 	m := make(map[int]int)
-	for i:=0;i<len(nums);i++{
-		v,ok := m[target-nums[i]]
-		if ok{
+	for i := 0; i < len(nums); i++ {
+		v, ok := m[target-nums[i]]
+		if ok {
 			res[0] = i
 			res[1] = v
 			return res
-		}else{
+		} else {
 			m[nums[i]] = i
 		}
 	}
@@ -56,23 +56,22 @@ func TwoSumMap(nums []int, target int)[]int{
 }
 
 //逐步对比法, 用target减去每一个元素，去和之后的元素对比
-func ThreeSum(nums []int, target int)[]int{
-	res := make([]int,2)
-	for i:=0;i<len(nums);i++{
+func ThreeSum(nums []int, target int) []int {
+	res := make([]int, 2)
+	for i := 0; i < len(nums); i++ {
 		var tmp int
 		tmp = nums[i]
 		//和后面的每一个元素进行对比
-		for j:=i+1;j<len(nums);j++{
-			if nums[j] + tmp == target{
-				res[0]=i
-				res[1]=j
+		for j := i + 1; j < len(nums); j++ {
+			if nums[j]+tmp == target {
+				res[0] = i
+				res[1] = j
 				return res
 			}
 		}
 	}
 	return nil
 }
-
 
 /*****************************1.两数之和end******************************/
 
@@ -98,14 +97,14 @@ func ThreeSum(nums []int, target int)[]int{
 时间复杂度: o(n)  x有多长，遍历执行多少次
 空间复杂度: o(1)  空间大小固定，不随变量改变
 */
-func Reverse(x int)int{
+func Reverse(x int) int {
 	var res int = 0
 
-	for x!=0{
+	for x != 0 {
 		//弹出x最后一位，并且移除x最后一位，从尾部开始添加到新的int数字里面，循环计算
 		//int型， 0.几都属于0
-		res = res*10 + x%10		//弹出x最后一位, 加到新数字里面
-		x = x/10			//移除x最后一位
+		res = res*10 + x%10 //弹出x最后一位, 加到新数字里面
+		x = x / 10          //移除x最后一位
 	}
 
 	//判断翻转之后的数字是否溢出, 翻转之后统一判断，减少运算次数, 在循环中一直判断的话，可能也会占用一定的内存
@@ -115,6 +114,7 @@ func Reverse(x int)int{
 
 	return res
 }
+
 /***************************7. 整数反转end*****************************/
 
 // MyIsPalindrome /*****************************9.回文数start******************************/
@@ -131,28 +131,29 @@ func Reverse(x int)int{
 //输出: false
 //解释: 从右向左读, 为 01 。因此它不是一个回文数
 //*/
-func MyIsPalindrome(x int)bool{
+func MyIsPalindrome(x int) bool {
 	//负数翻转不会相同,直接pass
-	if x<0{
+	if x < 0 {
 		fmt.Println("x = 0, error")
 		return false
 	}
 
 	//弹出最后一位数,每次都乘10,组成新int
-	var num,tmpNum,oldNum int
+	var num, tmpNum, oldNum int
 	oldNum = x
-	for x!=0{
-		tmpNum = x%10	//弹出最后一位数
-		num = num*10+tmpNum
-		x = x/10
+	for x != 0 {
+		tmpNum = x % 10 //弹出最后一位数
+		num = num*10 + tmpNum
+		x = x / 10
 	}
 
-	if num == oldNum{
+	if num == oldNum {
 		return true
 	}
 
 	return false
 }
+
 /*****************************9.回文数end******************************/
 
 //昂，筠，之，齐，扬，溪, 舟，弈, 茗，宁
@@ -162,7 +163,7 @@ func MyIsPalindrome(x int)bool{
 //通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1 在数字 5 的左边，
 //所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：
 //I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。
-//X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 
+//X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。
 //C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 //给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。
 //
@@ -185,7 +186,7 @@ func MyIsPalindrome(x int)bool{
 //大的在后 前面的 减
 //小的在后 前面的 加
 //最后一位总是加
-func RomanToNumber(s string)int{
+func RomanToNumber(s string) int {
 	var res int
 	m := make(map[byte]int)
 	m['I'] = 1
@@ -196,16 +197,16 @@ func RomanToNumber(s string)int{
 	m['D'] = 500
 	m['M'] = 1000
 
-	if len(s) == 1{
+	if len(s) == 1 {
 		return m[s[0]]
 	}
 	//IXVV
 	//这里面不会加最后一位, 因为sum += 的是 s[i-1], s[i]并不累加进去
-	for i:=1; i<len(s);i++{
+	for i := 1; i < len(s); i++ {
 		// m[X] > m[I]
-		if m[s[i]] > m[s[i-1]]{
+		if m[s[i]] > m[s[i-1]] {
 			res -= m[s[i-1]]
-		}else {
+		} else {
 			res += m[s[i-1]]
 		}
 	}
@@ -214,7 +215,6 @@ func RomanToNumber(s string)int{
 	res += m[s[len(s)-1]]
 	return res
 }
-
 
 /*****************************13. 罗马数字转整数*****************************/
 
@@ -234,10 +234,10 @@ func RomanToNumber(s string)int{
 //公共长度一定小于等于最短长度
 func LongestCommonPrefix(s []string) string {
 	commonPrefix := s[0] //原始公共前缀
-	for i:=1; i<len(s); i++{
-		ss := whoIsLonger(s[i],commonPrefix) //找到最短的那个元素
-		index := 0                           //公共前缀的数量
-		for index < len(ss) && s[i][index] == commonPrefix[index]{
+	for i := 1; i < len(s); i++ {
+		ss := whoIsLonger(s[i], commonPrefix) //找到最短的那个元素
+		index := 0                            //公共前缀的数量
+		for index < len(ss) && s[i][index] == commonPrefix[index] {
 			index++
 		}
 		//更新最长公共前缀
@@ -246,12 +246,13 @@ func LongestCommonPrefix(s []string) string {
 
 	return commonPrefix
 }
-func whoIsLonger(str1,str2 string)string{
-	if len(str1)>len(str2){
+func whoIsLonger(str1, str2 string) string {
+	if len(str1) > len(str2) {
 		return str2
 	}
 	return str1
 }
+
 /*****************************14.最长公共前缀*****************************/
 
 // IsValid /*****************************20.有效的括号*****************************/
@@ -275,40 +276,40 @@ func whoIsLonger(str1,str2 string)string{
 遇到左括号就入数组，遇到右括号就和数组的最后一个左括号对比，符合就继续，不符合就报错
 如果符合，数组最后的左括号要出数组, 最后如果还有右括号，但是左括号数组没有元素了-报错，
 */
-func IsValid(s string)bool{		//性能最好的的算法
-	if len(s) <= 1{
+func IsValid(s string) bool { //这个是性能比较好的的算法
+	if len(s) <= 1 {
 		return false
 	}
-	if s[0] == ')' || s[0] == '}' || s[0] == ']'{
+	if s[0] == ')' || s[0] == '}' || s[0] == ']' {
 		return false
 	}
 
 	//存储左边括号的字符数组切片
-	leftArr := make([]byte,0,len(s))
-	//左括号进数组	
-	for i:=0;i<len(s);i++{
-		if s[i]=='(' || s[i]=='{' || s[i]=='['{
-			leftArr = append(leftArr, s[i])	//进数组
-		}else {
-			if len(leftArr)==0{	//数组里面没有左括号了
+	leftArr := make([]byte, 0, len(s))
+	//左括号进数组
+	for i := 0; i < len(s); i++ {
+		if s[i] == '(' || s[i] == '{' || s[i] == '[' {
+			leftArr = append(leftArr, s[i]) //进数组
+		} else {
+			if len(leftArr) == 0 { //数组里面没有左括号了
 				return false
 			}
 			switch s[i] {
 			case ')':
-				if leftArr[len(leftArr)-1] != '('{
+				if leftArr[len(leftArr)-1] != '(' {
 					return false
 				}
-				leftArr = leftArr[:len(leftArr)-1]	//切片最后一位出队
+				leftArr = leftArr[:len(leftArr)-1] //切片最后一位出队
 			case ']':
-				if leftArr[len(leftArr)-1] != '['{
+				if leftArr[len(leftArr)-1] != '[' {
 					return false
 				}
-				leftArr = leftArr[:len(leftArr)-1]	//切片最后一位出队
+				leftArr = leftArr[:len(leftArr)-1] //切片最后一位出队
 			case '}':
-				if leftArr[len(leftArr)-1] != '{'{
+				if leftArr[len(leftArr)-1] != '{' {
 					return false
 				}
-				leftArr = leftArr[:len(leftArr)-1]	//切片最后一位出队
+				leftArr = leftArr[:len(leftArr)-1] //切片最后一位出队
 			default:
 				return false
 			}
@@ -316,37 +317,37 @@ func IsValid(s string)bool{		//性能最好的的算法
 
 	}
 
-	if len(leftArr)==0{
+	if len(leftArr) == 0 {
 		return true
 	}
 	return false
 }
 
 func IsValidMy(s string) bool {
-	str := make([]string,0,len(s)) //括号进入切片
-	for i:=0; i<len(s); i++{
+	str := make([]string, 0, len(s)) //括号进入切片
+	for i := 0; i < len(s); i++ {
 		str = append(str, string(s[i]))
 	}
 	//遇到有括号进行判断, 看前一个元素是否为匹配的左括号
-	for i:=1; i<len(str); i++{
-		if str[i] == ")" || str[i] == "]" || str[i] == "}"{
+	for i := 1; i < len(str); i++ {
+		if str[i] == ")" || str[i] == "]" || str[i] == "}" {
 			switch str[i] {
 			case ")":
-				if str[i-1] == "("{
+				if str[i-1] == "(" {
 					//匹配,当前元素和前一个元素从切片中移除
 					str = append(str[:i-1], str[i+1:]...)
 					//更新下标i，重头开始找，不然len的长度减小，i不减，前面的元素就都不会遍历
-					i  = 0
+					i = 0
 				}
 			case "]":
-				if str[i-1] == "["{
+				if str[i-1] == "[" {
 					str = append(str[:i-1], str[i+1:]...)
-					i  = 0
+					i = 0
 				}
 			case "}":
-				if str[i-1] == "{"{
+				if str[i-1] == "{" {
 					str = append(str[:i-1], str[i+1:]...)
-					i  = 0
+					i = 0
 				}
 			default:
 				return false
@@ -362,45 +363,46 @@ func IsValidMy(s string) bool {
 
 func IsValidMy1(s string) bool {
 	//括号放入一个切片
-	ks := make([]string,0,10)
-	for i:=0; i<len(s); i++{
+	ks := make([]string, 0, 10)
+	for i := 0; i < len(s); i++ {
 		ks = append(ks, string(s[i]))
 	}
 	//遍历切片
-	for i:=0; i<len(ks); i++{
+	for i := 0; i < len(ks); i++ {
 		//如果第一个就是左括号，错
 		//遇到右括号对比前一个元素是不是对应左括号
 		//是把两个元素从切片中移除
 		//重置下标重头遍历
 		switch ks[i] {
 		case ")":
-			if i==0 || ks[i-1] != "("{
+			if i == 0 || ks[i-1] != "(" {
 				return false
 			}
-			ks = append(ks[:i-1],ks[i+1:]...)
-			i=0
+			ks = append(ks[:i-1], ks[i+1:]...)
+			i = 0
 		case "]":
-			if i==0 || ks[i-1] != "["{
+			if i == 0 || ks[i-1] != "[" {
 				return false
 			}
-			ks = append(ks[:i-1],ks[i+1:]...)
-			i=0
+			ks = append(ks[:i-1], ks[i+1:]...)
+			i = 0
 		case "}":
-			if i==0 || ks[i-1] != "{"{
+			if i == 0 || ks[i-1] != "{" {
 				return false
 			}
-			ks = append(ks[:i-1],ks[i+1:]...)
-			i=0
+			ks = append(ks[:i-1], ks[i+1:]...)
+			i = 0
 		default:
 		}
 	}
 
 	//遍历完了,切片中还有数据则是错的
-	if len(ks)>0{
+	if len(ks) > 0 {
 		return false
 	}
 	return true
 }
+
 /*****************************20.有效的括号*****************************/
 
 // MergeTwoListsMy /*****************************21. 合并两个有序链表*****************************/
@@ -456,17 +458,18 @@ func RemoveDuplicates(nums []int) int {
 	if len(nums) <= 0 {
 		return 0
 	}
-	slow,fast := 0,1
-	for fast < len(nums){
-		if nums[fast]!=nums[slow]{
+	slow, fast := 0, 1
+	for fast < len(nums) {
+		if nums[fast] != nums[slow] {
 			slow++
 			nums[slow] = nums[fast]
 		}
 		fast++
 	}
-	fmt.Println("after:",nums[:slow+1])
-	return slow+1
+	fmt.Println("after:", nums[:slow+1])
+	return slow + 1
 }
+
 /******************************26. 删除有序数组中的重复项******************************/
 
 // AddBinary *****************************67. 二进制求和*****************************
@@ -490,9 +493,9 @@ func AddBinary(a string, b string) string {
 	carry := 0
 	lenA, lenB := len(a), len(b)
 	var n int
-	if lenA>lenB{
+	if lenA > lenB {
 		n = lenA
-	}else {
+	} else {
 		n = lenB
 	}
 
@@ -521,7 +524,5 @@ func AddBinary(a string, b string) string {
 
 	return res
 }
+
 /******************************67. 二进制求和******************************/
-
-
-
