@@ -1,11 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"github.com/yanzijie/go_leetcode/simple"
-)
-
-func main(){
+func main() {
 	//1.两数之和
 	//numArr := []int{2,7,11,15}
 	//res := simple.TwoSumMap(numArr,13)
@@ -33,7 +28,7 @@ func main(){
 	//}
 
 	//13.罗马数字转整数
-	//num := simple.RomanToNumber("IXVVX")
+	//num := simple.RomanToInt("LVX")
 	//fmt.Println(num)
 
 	//14.最长公共前缀
@@ -42,8 +37,8 @@ func main(){
 	//fmt.Println("prefix:",res)
 
 	//20.有效的括号
-	res := simple.IsValidMy1("([{}]])")
-	fmt.Println("res:",res)
+	//res := simple.IsValidMy1("([{}]])")
+	//fmt.Println("res:",res)
 
 	//26.删除有序数组中的重复项
 	//nums := []int{0,0,1,1,1,2,2,3,3,4}
@@ -53,5 +48,5 @@ func main(){
 	//64.二进制求和
 	//str := simple.AddBinary("010","11")
 	//fmt.Println("AddBinary: ",str)
-}
 
+}
