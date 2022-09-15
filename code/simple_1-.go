@@ -1,4 +1,4 @@
-package simple
+package code
 
 import (
 	"fmt"
@@ -280,7 +280,7 @@ func IsValid(s string) bool { //这个是性能比较好的的算法
 		return false
 	}
 
-	//存储左边括号的字符数组切片
+	//存储左边括号的字符切片
 	leftArr := make([]byte, 0, len(s))
 	//左括号进数组
 	for i := 0; i < len(s); i++ {
@@ -295,22 +295,19 @@ func IsValid(s string) bool { //这个是性能比较好的的算法
 				if leftArr[len(leftArr)-1] != '(' {
 					return false
 				}
-				leftArr = leftArr[:len(leftArr)-1] //切片最后一位出队
 			case ']':
 				if leftArr[len(leftArr)-1] != '[' {
 					return false
 				}
-				leftArr = leftArr[:len(leftArr)-1] //切片最后一位出队
 			case '}':
 				if leftArr[len(leftArr)-1] != '{' {
 					return false
 				}
-				leftArr = leftArr[:len(leftArr)-1] //切片最后一位出队
 			default:
 				return false
 			}
+			leftArr = leftArr[:len(leftArr)-1] //切片最后一位出队
 		}
-
 	}
 
 	if len(leftArr) == 0 {
@@ -464,6 +461,22 @@ func RemoveDuplicates(nums []int) int {
 	}
 	fmt.Println("after:", nums[:slow+1])
 	return slow + 1
+}
+
+// RemoveDuplicatesMap map法, 无序的数组也可以
+// []int{10, 3, 2, 1, 1, 1, 6, 2, 3, 3, 4, 4, 6}
+func RemoveDuplicatesMap(nums []int) int {
+	newArr := make([]int, 0)
+	m := make(map[int]bool)
+	for _, v := range nums {
+		_, ok := m[v]
+		if !ok {
+			newArr = append(newArr, v)
+			m[v] = true
+		}
+	}
+	fmt.Println("newArr: ", newArr)
+	return len(newArr)
 }
 
 /******************************26. 删除有序数组中的重复项******************************/

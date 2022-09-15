@@ -1,9 +1,10 @@
-package simple
+package code
 
 import "fmt"
 
 /*****************************创建两个链表*****************************/
-type ListNode struct{
+
+type ListNode struct {
 	data int
 	Next *ListNode
 }
@@ -30,7 +31,7 @@ func (p *ListNode) Traverse() {
 	fmt.Printf("\n")
 }
 
-func DoSingleNode(head1 *ListNode, head2 *ListNode){
+func DoSingleNode(head1 *ListNode, head2 *ListNode) {
 
 	head1.Append(1)
 	head1.Append(2)
@@ -43,5 +44,5 @@ func DoSingleNode(head1 *ListNode, head2 *ListNode){
 	head2.Traverse()
 
 }
-/*****************************创建两个链表*****************************/
 
+/*****************************创建两个链表*****************************/

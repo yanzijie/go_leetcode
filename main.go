@@ -1,18 +1,23 @@
 package main
 
+import (
+	"fmt"
+	"github.com/yanzijie/go_leetcode/code"
+)
+
 func main() {
 	//1.两数之和
 	//numArr := []int{2,7,11,15}
-	//res := simple.TwoSumMap(numArr,13)
+	//res := code.TwoSumMap(numArr,13)
 	//fmt.Println("TwoSum:",res)
 
 	////7.翻转整数
-	//num := simple.Reverse(-321)
+	//num := code.Reverse(-321)
 	//fmt.Println(num)
 
 	//9.回文数
 	//num := 232
-	//res := simple.MyIsPalindrome(num)
+	//res := code.MyIsPalindrome(num)
 	//if res == true{
 	//	fmt.Println("是回文数:",num)
 	//}else {
@@ -28,25 +33,26 @@ func main() {
 	//}
 
 	//13.罗马数字转整数
-	//num := simple.RomanToInt("LVX")
+	//num := code.RomanToInt("LVX")
 	//fmt.Println(num)
 
 	//14.最长公共前缀
-	//var strs = []string{"flower","flow","flight"}
-	//res := simple.LongestCommonPrefix(strs)
-	//fmt.Println("prefix:",res)
+	//var strs = []string{"flower", "flow", "flight"}
+	//res := code.LongestCommonPrefix(strs)
+	//fmt.Println("prefix:", res)
 
 	//20.有效的括号
-	//res := simple.IsValidMy1("([{}]])")
+	//res := code.IsValidMy1("([{}]])")
 	//fmt.Println("res:",res)
 
 	//26.删除有序数组中的重复项
 	//nums := []int{0,0,1,1,1,2,2,3,3,4}
-	//res := simple.RemoveDuplicates(nums)
-	//fmt.Println("res:",res)
+	nums := []int{10, 3, 2, 1, 1, 1, 6, 2, 3, 3, 4, 4, 6}
+	res := code.RemoveDuplicatesMap(nums)
+	fmt.Println("res:", res)
 
 	//64.二进制求和
-	//str := simple.AddBinary("010","11")
+	//str := code.AddBinary("010","11")
 	//fmt.Println("AddBinary: ",str)
 
 }
