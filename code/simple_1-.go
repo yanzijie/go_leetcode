@@ -40,19 +40,15 @@ func TwoSum(nums []int, target int) []int {
 空间复杂度 : O(n) 空间大小随着n的变化而变化
 */
 func TwoSumMap(nums []int, target int) []int {
-	res := make([]int, 2)
 	m := make(map[int]int)
-	for i := 0; i < len(nums); i++ {
-		v, ok := m[target-nums[i]]
+	for i, aLen := 0, len(nums); i < aLen; i++ {
+		_, ok := m[target-nums[i]]
 		if ok {
-			res[0] = i
-			res[1] = v
-			return res
-		} else {
-			m[nums[i]] = i
+			return []int{m[target-nums[i]], i}
 		}
+		m[nums[i]] = i
 	}
-	return res
+	return nil
 }
 
 // ThreeSum 逐步对比法, 用target减去每一个元素，去和之后的元素对比
@@ -132,26 +128,21 @@ func Reverse(x int) int {
 // 解释: 从右向左读, 为 01 。因此它不是一个回文数
 // */
 func MyIsPalindrome(x int) bool {
-	//负数翻转不会相同,直接pass
+	// 负数翻转不会相同,直接pass
 	if x < 0 {
-		fmt.Println("x = 0, error")
 		return false
 	}
 
 	//弹出最后一位数,每次都乘10,组成新int
-	var num, tmpNum, oldNum int
-	oldNum = x
+	var newX, tmp, oldX int
+	oldX = x
 	for x != 0 {
-		tmpNum = x % 10 //弹出最后一位数
-		num = num*10 + tmpNum
+		tmp = x % 10
+		newX = newX*10 + tmp
 		x = x / 10
 	}
 
-	if num == oldNum {
-		return true
-	}
-
-	return false
+	return newX == oldX
 }
 
 /*****************************9.回文数end******************************/
