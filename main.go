@@ -1,10 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"github.com/yanzijie/go_leetcode/code"
-)
-
 func main() {
 	//1.两数之和
 	//numArr := []int{2,7,11,15}
@@ -33,7 +28,7 @@ func main() {
 	//}
 
 	//13.罗马数字转整数
-	//num := code.RomanToInt("LVX")
+	//num := code.RomanToInt("III")
 	//fmt.Println(num)
 
 	//14.最长公共前缀
@@ -47,9 +42,9 @@ func main() {
 
 	//26.删除有序数组中的重复项
 	//nums := []int{0,0,1,1,1,2,2,3,3,4}
-	nums := []int{10, 3, 2, 1, 1, 1, 6, 2, 3, 3, 4, 4, 6}
-	res := code.RemoveDuplicatesMap(nums)
-	fmt.Println("res:", res)
+	//nums := []int{10, 3, 2, 1, 1, 1, 6, 2, 3, 3, 4, 4, 6}
+	//res := code.RemoveDuplicatesMap(nums)
+	//fmt.Println("res:", res)
 
 	//64.二进制求和
 	//str := code.AddBinary("010","11")
