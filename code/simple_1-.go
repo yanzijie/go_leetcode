@@ -188,8 +188,8 @@ func RomanToInt(s string) int {
 
 	//['L',"V","I","I","I"]
 	//['L',"V","X"]
-	var res, i int
-	for i = 0; i < len(s)-1; i++ {
+	var res, i, sLen int
+	for i, sLen = 0, len(s)-1; i < sLen; i++ {
 		if tm[s[i+1]] > tm[s[i]] {
 			res -= tm[s[i]]
 		} else {
