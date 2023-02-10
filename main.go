@@ -1,5 +1,9 @@
 package main
 
+import (
+	"github.com/yanzijie/go_leetcode/code"
+)
+
 func main() {
 	//1.两数之和
 	//numArr := []int{2,7,11,15}
@@ -39,6 +43,13 @@ func main() {
 	//20.有效的括号
 	//res := code.IsValidMy1("([{}]])")
 	//fmt.Println("res:",res)
+
+	//21. 合并两个有序链表
+	list1 := new(code.ListNode)
+	list2 := new(code.ListNode)
+	code.DoSingleNode(list1, list2)
+	list := code.MergeTwoListTwoPoint(list1, list2)
+	list.Traverse()
 
 	//26.删除有序数组中的重复项
 	//nums := []int{0,0,1,1,1,2,2,3,3,4}
