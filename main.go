@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"github.com/yanzijie/go_leetcode/code"
 )
 
@@ -45,17 +46,17 @@ func main() {
 	//fmt.Println("res:",res)
 
 	//21. 合并两个有序链表
-	list1 := new(code.ListNode)
-	list2 := new(code.ListNode)
-	code.DoSingleNode(list1, list2)
-	list := code.MergeTwoListTwoPoint(list1, list2)
-	list.Traverse()
+	//list1 := new(code.ListNode)
+	//list2 := new(code.ListNode)
+	//code.DoSingleNode(list1, list2)
+	//list := code.MergeTwoListTwoPoint(list1, list2)
+	//list.Traverse()
 
 	//26.删除有序数组中的重复项
-	//nums := []int{0,0,1,1,1,2,2,3,3,4}
+	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
 	//nums := []int{10, 3, 2, 1, 1, 1, 6, 2, 3, 3, 4, 4, 6}
-	//res := code.RemoveDuplicatesMap(nums)
-	//fmt.Println("res:", res)
+	res := code.RemoveDuplicatesSlice(nums)
+	fmt.Println("res:", res)
 
 	//64.二进制求和
 	//str := code.AddBinary("010","11")

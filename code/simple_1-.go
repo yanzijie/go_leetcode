@@ -464,6 +464,7 @@ for (int i = 0; i < len; i++) {
 解释：函数应该返回新的长度 5 ， 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4 。不需要考虑数组中超出新长度后面的元素
 */
 func RemoveDuplicates(nums []int) int {
+	// 这个算法效率最高，但是没有修改原数组
 	if len(nums) <= 0 {
 		return 0
 	}
@@ -493,6 +494,18 @@ func RemoveDuplicatesMap(nums []int) int {
 	}
 	fmt.Println("newArr: ", newArr)
 	return len(newArr)
+}
+
+func RemoveDuplicatesSlice(nums []int) int {
+	// 切片自己删自己
+	var i int
+	for i = 1; i < len(nums); i++ {
+		if nums[i] == nums[i-1] {
+			nums = append(nums[:i-1], nums[i:]...)
+			i--
+		}
+	}
+	return len(nums)
 }
 
 /******************************26. 删除有序数组中的重复项******************************/
