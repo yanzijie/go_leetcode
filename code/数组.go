@@ -1,6 +1,9 @@
 package code
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 // RemoveDuplicates *****************************26. 删除有序数组中的重复项*****************************
 /*
@@ -114,3 +117,96 @@ func SearchInsert(nums []int, target int) int {
 }
 
 /******************************35. 搜索插入位置******************************/
+
+// FindDifferentElements /*********************************非leetcode题目************************************/
+/*
+实现一个"找出两个数组中不同元素"的算法，需要考虑两个数组元素数量不同的情况
+例如:  输入[1,2,3,4,5,6,7] 和 [1,2,3,5,6], 返回 [4,7]
+*/
+/*********************************非leetcode题目************************************/
+func FindDifferentElements(arr1 []int, arr2 []int) []int {
+	res := make([]int, 0)
+
+	// 把arr1数组中不在arr2中的元素添加到res中
+	for _, item := range arr1 {
+		if !isInArr(arr2, item) {
+			res = append(res, item)
+		}
+	}
+	// 把arr2数组中不在arr1中的元素添加到res中
+	for _, item := range arr2 {
+		if !isInArr(arr1, item) {
+			res = append(res, item)
+		}
+	}
+
+	return res
+}
+
+// 判断元素 item 是否在数组 arr 中, 在返回true, 不在false
+func isInArr(arr []int, item int) bool {
+	for _, v := range arr {
+		if v == item {
+			return true
+		}
+	}
+	return false
+}
+
+// RemoveDuplicatesString /*********************************非leetcode题目************************************/
+/*
+数组元素去重
+*/
+func RemoveDuplicatesString(strs []string) []string {
+	// 如果数组长度小于等于1，则无需进行去重操作，直接返回原始数组
+	if len(strs) <= 1 {
+		return strs
+	}
+
+	// 先将数组排序，方便后面去重操作
+	sort.Strings(strs)
+
+	// 定义慢指针i和快指针j，初始值分别为0和1
+	i := 0
+	for j := 1; j < len(strs); j++ {
+		// 不相等，则将nums[j]赋值给nums[i+1],覆盖重复的元素，并将i向右移动一位
+		if strs[j] != strs[i] {
+			// 由于 i++ 了，所以在正常情况下 i 和 j 是相等的，所以覆盖不会产生问题
+			// 只有要有一次前后元素都相等，i就不会向右移动,
+			// i和j这个时候才不相等，这个时候就可以覆盖了
+			i++
+			strs[i] = strs[j]
+		}
+	}
+
+	// 返回删除后的数组，数组长度为i+1, i之后的元素就不要了
+	return strs[0 : i+1]
+}
+
+func RemoveDuplicatesInt(nums []int) []int {
+	// 如果数组长度小于等于1，则无需进行去重操作，直接返回原始数组
+	if len(nums) <= 1 {
+		return nums
+	}
+
+	// 先将数组排序，方便后面去重操作
+	sort.Ints(nums)
+
+	// 定义慢指针i和快指针j，初始值分别为0和1
+	i := 0
+	for j := 1; j < len(nums); j++ {
+		// 不相等，则将nums[j]赋值给nums[i+1],覆盖重复的元素，并将i向右移动一位
+		if nums[j] != nums[i] {
+			// 由于 i++ 了，所以在正常情况下 i 和 j 是相等的，所以覆盖不会产生问题
+			// 只有要有一次前后元素都相等，i就不会向右移动,
+			// i和j这个时候才不相等，这个时候就可以覆盖了
+			i++
+			nums[i] = nums[j]
+		}
+	}
+
+	// 返回删除后的数组，数组长度为i+1, i之后的元素就不要了
+	return nums[0 : i+1]
+}
+
+/*********************************非leetcode题目************************************/
