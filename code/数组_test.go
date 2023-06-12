@@ -7,12 +7,6 @@ import (
 )
 
 func Test_findDifferentElements(t *testing.T) {
-	//arr1 := []int{1, 2, 3, 4, 5, 6, 7, 10}
-	//arr2 := []int{1, 12, 3, 5, 6, 8, 8}
-	//
-	//result := findDifferentElements(arr1, arr2)
-	//fmt.Println(result)
-
 	testCases := []struct {
 		name     string
 		arr1     []int

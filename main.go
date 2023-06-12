@@ -6,11 +6,6 @@ import (
 )
 
 func main() {
-	//1.两数之和
-	//numArr := []int{2,7,11,15}
-	//res := code.TwoSumMap(numArr,13)
-	//fmt.Println("TwoSum:",res)
-
 	////7.翻转整数
 	//num := code.Reverse(-321)
 	//fmt.Println(num)

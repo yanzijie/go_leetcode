@@ -1,15 +1,17 @@
 package code
 
+import "github.com/yanzijie/go_leetcode/code/tools"
+
 // MergeTwoListsMy /*****************************21. 合并两个有序链表*****************************/
 /*
 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
 */
 // 方法1, 定义新链表, 有头尾指针
-func MergeTwoListsMy(list1 *ListNode, list2 *ListNode) *ListNode {
+func MergeTwoListsMy(list1 *tools.ListNode, list2 *tools.ListNode) *tools.ListNode {
 	if list1 == nil && list2 == nil {
 		return nil
 	}
-	head := &ListNode{}
+	head := &tools.ListNode{}
 	tail := head
 	for list1 != nil || list2 != nil {
 		if list1 == nil {
@@ -38,9 +40,9 @@ func MergeTwoListsMy(list1 *ListNode, list2 *ListNode) *ListNode {
 }
 
 // MergeTwoListTwoPoint 方法2：双指针法, 效率更高
-func MergeTwoListTwoPoint(list1 *ListNode, list2 *ListNode) *ListNode {
+func MergeTwoListTwoPoint(list1 *tools.ListNode, list2 *tools.ListNode) *tools.ListNode {
 	//初始化一个虚拟的头节点
-	newList := &ListNode{}
+	newList := &tools.ListNode{}
 	p := newList
 	p1 := list1
 	p2 := list2
