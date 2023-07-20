@@ -99,3 +99,27 @@ func Test_RemoveDuplicatesTwo(t *testing.T) {
 		})
 	}
 }
+
+func TestPlusOne(t *testing.T) {
+	tests := []struct {
+		input    []int
+		expected []int
+	}{
+		{[]int{1, 2, 3}, []int{1, 2, 4}},
+		{[]int{9, 9}, []int{1, 0, 0}},
+		{[]int{0}, []int{1}},
+		{[]int{9, 9, 9}, []int{1, 0, 0, 0}},
+		{[]int{7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7, 3, 2,
+			8, 4, 3, 7, 9, 5, 7, 7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7,
+			4, 0, 0, 6}, []int{7, 2, 8, 5, 0, 9, 1, 2, 9, 5, 3, 6, 6, 7,
+			3, 2, 8, 4, 3, 7, 9, 5, 7, 7, 4, 7, 4, 9, 4, 7, 0, 1, 1, 1, 7, 4, 0, 0, 7}},
+	}
+
+	for _, test := range tests {
+		result := PlusOne(test.input)
+
+		if !reflect.DeepEqual(result, test.expected) {
+			t.Errorf("Input: %v, Expected: %v, Got: %v", test.input, test.expected, result)
+		}
+	}
+}
