@@ -291,6 +291,7 @@ func LengthOfLastWord(s string) int {
 	}
 	s = strings.TrimSpace(s)
 	arr := strings.Split(s, " ")
+	return len(arr[len(arr)-1])
 
 	// 不用 strings.TrimSpace(s) 的方案
 	//na := arr[:0]
@@ -300,9 +301,43 @@ func LengthOfLastWord(s string) int {
 	//	}
 	//}
 	//return len(na[len(na)-1])
-
-	return len(arr[len(arr)-1])
-
 }
 
 /******************************58. 最后一个单词的长度End******************************/
+
+//StrStr /******************************28. 找出字符串中第一个匹配项的下标 Start******************************/
+/*
+给你两个字符串 haystack 和 needle ，
+请你在 haystack 字符串中找出 needle 字符串的第一个匹配项的下标（下标从 0 开始）,
+如果 needle 不是 haystack 的一部分，则返回  -1 。
+
+示例 1：
+输入：haystack = "sadbutsad", needle = "sad"
+输出：0
+解释："sad" 在下标 0 和 6 处匹配。
+第一个匹配项的下标是 0 ，所以返回 0
+
+示例 2：
+输入：haystack = "leetcode", needle = "leeto"
+输出：-1
+解释："leeto" 没有在 "leetcode" 中出现，所以返回 -1
+*/
+func StrStr(haystack string, needle string) int {
+	// 使用系统包...
+	//return strings.Index(haystack, needle)
+
+	if len(haystack) == 0 || len(needle) == 0 || len(needle) > len(haystack) {
+		return -1
+	}
+
+	// 因为存在needle只是一个字符的情况，所以 i<=len 最后一个也要看
+	for i := 0; i <= len(haystack)-len(needle); i++ {
+		// 从第一个元素开始，以len(needle)为长度, 一组一组的对比
+		if haystack[i:i+len(needle)] == needle {
+			return i
+		}
+	}
+	return -1
+}
+
+/******************************28. 找出字符串中第一个匹配项的下标 End******************************/
