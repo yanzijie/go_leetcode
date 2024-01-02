@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	////7.翻转整数
@@ -54,17 +57,13 @@ func main() {
 	//str := code.AddBinary("010","11")
 	//fmt.Println("AddBinary: ",str)
 
-	//ff(20)
-	factorial(100)
 }
 
-func ff(num int64) {
-	var i, n int64
-	n = 1
-	for i = 1; i <= num; i++ {
-		n = n * i
-		fmt.Println(i, n)
-	}
+// HasTwoDecimalPlaces 判断 f 是否只有2位小数
+func HasTwoDecimalPlaces(f float64) bool {
+	const epsilon = 1e-9 // 精度阈值
+	multiplied := f * 100
+	return math.Abs(multiplied-math.Round(multiplied)) < epsilon
 }
 
 const MaxNum = 100000
@@ -102,11 +101,3 @@ func multiply(x []int, size int, num int) int {
 
 	return size
 }
-
-//func f(size, num, l int, x []int) {
-//	fmt.Println(l, "---Factorial of", num, "is:")
-//	for i := size - 1; i >= 0; i-- {
-//		fmt.Print(x[i])
-//	}
-//	fmt.Println()
-//}
