@@ -123,3 +123,7 @@ func TestPlusOne(t *testing.T) {
 		}
 	}
 }
+
+func TestClimbStairs(t *testing.T) {
+	ClimbStairs(4)
+}
