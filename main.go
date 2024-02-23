@@ -58,6 +58,14 @@ func main() {
 	//fmt.Println("AddBinary: ",str)
 
 	//509.斐波那契数
-	res := code.Fib(0)
+	//res := code.Fib(0)
+	//fmt.Println(res)
+
+	// 746.使用最小花费爬楼梯
+	arr := make([]int, 0)
+	arr = append(arr, 10)
+	arr = append(arr, 15)
+	arr = append(arr, 20)
+	res := code.MinCostClimbingStairs(arr)
 	fmt.Println(res)
 }
